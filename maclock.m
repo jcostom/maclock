@@ -1,3 +1,5 @@
+// Code Found here: http://apple.stackexchange.com/questions/80058/lock-screen-command-one-liner
+
 #import <objc/runtime.h>
 #import <Foundation/Foundation.h>
 

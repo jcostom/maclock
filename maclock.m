@@ -4,10 +4,21 @@
 #import <objc/runtime.h>
 #import <Foundation/Foundation.h>
 
-int main () {
-    NSBundle *bundle = [NSBundle bundleWithPath:@"/Applications/Utilities/Keychain Access.app/Contents/Resources/Keychain.menu"];
-    Class principalClass = [bundle principalClass];
-    id instance = [[principalClass alloc] init];
-    [instance performSelector:@selector(_lockScreenMenuHit:) withObject:nil];
+int main (int argc, char *argv[]) {
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    char versionTag[] = "0.2";
+
+    if (argc > 1) {
+        // If CLI args given, output version and exit
+        NSLog(@"%s [%s]: Trigger Immediate Screen Lock.\n", argv[0], versionTag);
+    } else {
+        // If no CLI args given, trigger screen lock immediately.
+        NSBundle *bundle = [NSBundle bundleWithPath:@"/Applications/Utilities/Keychain Access.app/Contents/Resources/Keychain.menu"];
+        Class principalClass = [bundle principalClass];
+        id instance = [[principalClass alloc] init];
+        [instance performSelector:@selector(_lockScreenMenuHit:) withObject:nil];
+    }
+
+    [pool drain];
     return 0;
 }

@@ -6,11 +6,11 @@
 
 int main (int argc, char *argv[]) {
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    char versionTag[] = "0.2";
+    char versionTag[] = "0.3";
 
     if (argc > 1) {
         // If CLI args given, output version and exit
-        NSLog(@"%s [%s]: Trigger Immediate Screen Lock.\n", argv[0], versionTag);
+        printf("%s [%s]: Trigger Immediate Screen Lock.\n", argv[0], versionTag);
     } else {
         // If no CLI args given, trigger screen lock immediately.
         NSBundle *bundle = [NSBundle bundleWithPath:@"/Applications/Utilities/Keychain Access.app/Contents/Resources/Keychain.menu"];
